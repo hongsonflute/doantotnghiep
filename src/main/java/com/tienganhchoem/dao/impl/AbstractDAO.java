@@ -85,7 +85,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
     }
 
     @Override
-    public void update(String sql, Object... parameters) {
+    public boolean update(String sql, Object... parameters) {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -95,6 +95,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
             setParameter(statement, parameters);
             statement.executeUpdate();
             connection.commit();
+            return true;
         } catch (SQLException e) {
             if (connection != null) {
                 try {
@@ -115,6 +116,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
                 e2.printStackTrace();
             }
         }
+        return  false;
     }
 
     @Override

@@ -1,27 +1,37 @@
 package com.tienganhchoem.model;
 
 public class AnswerModel extends AbstractModel<AnswerModel> {
-    private String name;
-    private  String code;
+    private String title;
+    private  String thumbnail;
+    private  String shortDescription;
     private String content;
-    private int result;
-    private String picture;
+    private boolean isTrue;
+    private String linkMp3;
     private String questionId;
 
-    public String getName() {
-        return name;
+
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getCode() {
-        return code;
+    public String getThumbnail() {
+        return thumbnail;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
     public String getContent() {
@@ -32,20 +42,20 @@ public class AnswerModel extends AbstractModel<AnswerModel> {
         this.content = content;
     }
 
-    public int getResult() {
-        return result;
+    public boolean isTrue() {
+        return isTrue;
     }
 
-    public void setResult(int result) {
-        this.result = result;
+    public void setTrue(boolean aTrue) {
+        isTrue = aTrue;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getLinkMp3() {
+        return linkMp3;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setLinkMp3(String linkMp3) {
+        this.linkMp3 = linkMp3;
     }
 
     public String getQuestionId() {

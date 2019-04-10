@@ -6,7 +6,15 @@ public class LessionModel extends AbstractModel<LessionModel> {
     private  String shortDescription;
     private String content;
     private Long categoryId;
+    private CategoryModel categoryModel;
 
+    public CategoryModel getCategoryModel() {
+        return categoryModel;
+    }
+
+    public void setCategoryModel(CategoryModel categoryModel) {
+        this.categoryModel = categoryModel;
+    }
 
     public String getTitle() {
         return title;

@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Bài học:</title>
+    <title>${lessionModel.title}</title>
 </head>
 
 <body>
@@ -35,7 +35,12 @@
                                     <!-- About Course -->
                                     <div class="about-course mb-30">
                                         <h4>Nội dung bài học</h4>
+                                        <p>${lessionModel.title}</p>
                                         <p>nhúng video vào đây</p>
+                                        <video width="600" controls>
+                                            <source src="/template/thuvien/video/video-hoc-so.mp4" type="video/mp4">
+
+                                        </video>
                                     </div>
 
                                 </div>
@@ -47,16 +52,43 @@
 
                                     <!-- About Curriculum -->
                                     <div class="about-curriculum mb-30">
-                                        <h4>Luyện Tập</h4>
+                                        <h4 id="luyentap">Luyện Tập</h4>
                                         <p>Các em hãy làm bài luyện tập dưới đây để nắm vững kiến thức</p>
                                     </div>
                                     <div class="about-curriculum mb-30">
-                                        <h4>TRÒ CHƠI 1 TRẮC NGHIỆM</h4>
-                                        <p>Nhúng trò chơi 1 vào đây</p>
+                                        <h4>TRÒ CHƠI LUYỆN NGHE 01</h4>
+                                            <div class="khung-tro-choi">
+                                                <div class="cauhoi">
+                                                    <div class="loa" style="background-image: url(/template/thuvien/hinhanh/loa-icon.png)" id="loa"></div>
+                                                    <div id="cogiao" class="cogiao" style="background-image: url(/template/thuvien/hinhanh/huong-dan-icon.png)"></div>
+                                                    <div class="huongdan" >
+                                                        <p>Các em hãy nhấn vào loa để nghe câu hỏi. Rồi chọn đáp án đúng!!! </p>
+                                                    </div>
+                                                </div>
+                                                <div class="dapandung" style="background-image: url(/template/thuvien/hinhanh/hoi-cham-icon.png)" id="dapandung" ></div>
+                                                <div class="dapan1" style="background-image: url(/template/thuvien/hinhanh/chuso/so1.jpg)" id="dapan1"  onclick="myMove()">
+                                                    <button type="text" value="1" id="a"></button>
+                                                </div>
+                                                <div class="dapan2" style="background-image: url(/template/thuvien/hinhanh/chuso/so2.jpg)" id="dapan2" onclick="myMove2()">
+                                                    <button type="text" value="0" id="b"></button>
+                                                </div>
+                                                <div class="dapan3" style="background-image: url(/template/thuvien/hinhanh/chuso/so3.jpg)" id="dapan3" onclick="myMove3()">
+                                                    <button type="text" value="0" id="c"></button>
+                                                </div>
+                                                <div class="dapan4" style="background-image: url(/template/thuvien/hinhanh/chuso/so4.jpg)" id="dapan4" onclick="myMove4()">
+                                                    <button type="text" value="0" id="d"></button>
+                                                </div>
+                                                    <button type="button" class="kiemtra" id="kiemtraketqua">Trả Lời</button>
+                                                    <button type="button" class="cautiep" id="cautiep" hidden>Câu Tiếp>></button>
+                                                <div hidden id="thongbaodung" class="thongbaodapan" style="background-image: url(/template/thuvien/hinhanh/true.jpg)"></div>
+                                                <div hidden id="thongbaosai" class="thongbaodapan" style="background-image: url(/template/thuvien/hinhanh/false.jpg)"></div>
+                                            </div>
                                     </div>
+
                                     <div class="about-curriculum mb-30">
                                         <h4>TRÒ CHƠI 2 </h4>
                                         <p>Nhúng trò chơi 2 vào đây</p>
+                                        <img src="${pageContext.request.contextPath}/C:/usr/var/thumbnail/images.jpg" height="42" width="42" />
                                     </div>
                                 </div>
                             </div>

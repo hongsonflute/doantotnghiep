@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<div class="row"  style="margin-top: 5%;">
+<div class="row" style="margin-top: 5%;">
     <div class="col-md-4">
         <!-- Widget -->
         <div class="clever-curriculum">
@@ -42,43 +42,50 @@
     </div>
 
 
-
     <div class="col-md-8">
 
         <!-- About Curriculum -->
         <div class="clever-curriculum">
             <div class="about-curriculum mb-30">
                 <h5 style="text-align: center">Thông tin cá nhân</h5>
-                <table width="100%">
-                    <tr class="hang">
-                        <th class="tieu-de">Họ và tên</th>
-                        <td class="du-lieu"><input type="text" value="${userModel.fullName}" class="input-du-lieu"></td>
-                    </tr>
-                    <tr class="hang">
-                        <th class="tieu-de">Địa chỉ Email</th>
-                        <td class="du-lieu"><input type="text" value="${userModel.userName}" class="input-du-lieu"></td>
-                    </tr>
-                    <tr class="hang">
-                        <th class="tieu-de">Ngày sinh</th>
-                        <td class="du-lieu"><input type="text" value="${userModel.password}" class="input-du-lieu"></td>
-                    </tr>
-                    <tr class="hang">
-                        <th class="tieu-de">Giới tính</th>
-                        <td class="du-lieu"><input type="text" value="" class="input-du-lieu"></td>
-                    </tr>
-                    <tr class="hang">
-                        <th class="tieu-de">Ngày tham gia</th>
-                        <td class="du-lieu"><input type="text" value="" class="input-du-lieu"></td>
-                    </tr>
-                </table>
-                <a class="ti-save" href="#" style="color: green"> Cập nhật thông tin</a>
+                <form method="post" action="/user">
+                    <table width="100%">
+                        <tr class="hang">
+                            <th class="tieu-de">Họ và tên</th>
+                            <td class="du-lieu"><input type="text" value="${userModel.fullName}" name="fullName"
+                                                       class="input-du-lieu">
+                            </td>
+                        </tr>
+                        <tr class="hang">
+                            <th class="tieu-de">Địa chỉ Email</th>
+                            <td class="du-lieu"><input type="text" value="${userModel.userName}" name="userName"
+                                                       class="input-du-lieu">
+                            </td>
+                        </tr>
+                        <tr class="hang">
+                            <th class="tieu-de">Ngày sinh</th>
+                            <td class="du-lieu"><input type="text" value="${userModel.password}" name="password"
+                                                       class="input-du-lieu">
+                            </td>
+                        </tr>
+                        <tr class="hang">
+                            <th class="tieu-de">Giới tính</th>
+                            <td class="du-lieu"><input type="text" value="" class="input-du-lieu"></td>
+                        </tr>
+                        <tr class="hang">
+                            <th class="tieu-de">Ngày tham gia</th>
+                            <td class="du-lieu">${userModel.createdDate}</td>
+                        </tr>
+                    </table>
+                    <input type="hidden" name="id" value="${userModel.id}">
+                    <c:if test="${userModel.id==USERMODEL.id}">
+                        <div class="cap-nhat" style="text-align: center; margin-top: 20px;">
+                            <button class="ti-save" type="submit" style="color: green"> Cập nhật thông tin</button>
+                        </div>
+                    </c:if>
+                </form>
             </div>
         </div>
     </div>
-
-
-
 </div>
-
-
 </body>

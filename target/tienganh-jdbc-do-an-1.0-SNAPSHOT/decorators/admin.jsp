@@ -4,8 +4,10 @@
 <html>
 <head>
     <title><dec:title default="Trang chủ" /></title>
+    <script src="/template/ckeditor/ckeditor.js"></script>
     <!-- Title -->
     <title>| Home</title>
+
 
     <!-- Bootstrap core CSS     -->
     <link href="/template/admin/css/bootstrap.min.css" rel="stylesheet" />
@@ -25,6 +27,7 @@
     <%--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">--%>
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="/template/admin/css/themify-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="<c:url value='/template/web/css/style-by-son.css'/>"/>
 
 </head>
 <body>
@@ -40,6 +43,7 @@
 </div>
 </body>
 <!--   Core JS Files   -->
+
 <script src="/template/admin/js/jquery.min.js" type="text/javascript"></script>
 <script src="/template/admin/js/bootstrap.min.js" type="text/javascript"></script>
 
@@ -60,6 +64,8 @@
 
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="/template/admin/js/demo.js"></script>
+<script src="/global/js/validate.js"></script>
+
 
 <%--<script type="text/javascript">
     $(document).ready(function(){

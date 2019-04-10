@@ -47,7 +47,6 @@
                     <div class="classynav">
                         <ul>
                             <li><a href='<c:url value="/trang-chu"/>'>Trang Chủ</a></li>
-                            <li><a href='<c:url value="/list-lession?action=detail"/>'>Bài học</a></li>
                             <li><a href='<c:url value="/user?userId=${USERMODEL.id}"/>'>Trang cá nhân</a></li>
                             <li><a href='<c:url value="/lien-he?action=about"/>'>Liên Hệ</a></li>
                         </ul>
@@ -72,15 +71,18 @@
                             <div class="login-state d-flex align-items-center">
                                 <div class="user-name mr-30">
                                     <div class="dropdown">
-                                        <a class="dropdown-toggle" href="#" role="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${USERMODEL.fullName}</a>
+                                        <a class="dropdown-toggle" href="#" role="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${USERMODEL.userName}</a>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
                                             <a class="dropdown-item" href='<c:url value="/user?userId=${USERMODEL.id}"/>'>Trang cá nhân</a>
+                                            <c:if test="${USERMODEL.roleId ==1||USERMODEL.roleId ==1 }">
+                                                <a class="dropdown-item" href='<c:url value="/admin-home"/>'>Trang quản trị</a>
+                                            </c:if>
                                             <a class="dropdown-item" href='<c:url value="/dang-xuat?action=logout"/>'>Đăng Xuất</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="userthumb">
-                                    <img src="img/bg-img/t1.png" alt="">
+                                    <img src="/template/web/img/bg-img/t1.png" alt="">
                                 </div>
                             </div>
                         </c:if>

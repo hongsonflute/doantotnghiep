@@ -8,5 +8,5 @@
     <title> Thông Báo</title>
 </head>
 <body>
-<h1>thong bao he thong</h1>
+<h1>Thông báo hệ thống đang được xây dựng</h1>
 </body>

@@ -19,10 +19,10 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     @Override
     public Long save(UserModel userModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO user (username, password,");
-        sql.append(" fullname, status, roleid)");
-        sql.append(" VALUES(?, ?, ?, ?, ?)");
+        sql.append(" fullname, status, roleid, createddate, createdby)");
+        sql.append(" VALUES(?, ?, ?, ?, ?, ?, ?)");
         return insert(sql.toString(), userModel.getUserName(),userModel.getPassword(),userModel.getFullName(),
-                userModel.getStatus(),userModel.getRoleId());
+                userModel.getStatus(),userModel.getRoleId(),userModel.getCreatedDate(),userModel.getCreatedBy());
     }
 
     @Override
@@ -41,4 +41,39 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
         }
         return true;
     }
+
+    @Override
+    public boolean update(UserModel userModelUpdate) {
+        StringBuilder sql = new StringBuilder("UPDATE user SET username = ?, fullname = ?,");
+        sql.append(" password = ?, modifieddate = ?, modifiedby = ? WHERE id = ?");
+
+        return update(sql.toString(), userModelUpdate.getUserName(), userModelUpdate.getFullName(), userModelUpdate.getPassword(),
+                userModelUpdate.getModifiedDate(), userModelUpdate.getModifiedBy(),userModelUpdate.getId());
+
+    }
+
+    @Override
+    public List<UserModel> findAll() {
+        StringBuilder sql =new StringBuilder("SELECT * FROM user as u");
+        sql.append(" INNER JOIN role AS r ON r.id = u.roleid");
+        sql.append(" WHERE 1=1");
+        List<UserModel> userModels = query(sql.toString(), new UserMapper());
+        return userModels.isEmpty() ? null : userModels;
+    }
+
+    @Override
+    public void delete(Long id) {
+        String sql = "DELETE FROM user WHERE id = ?";
+        update(sql,id);
+    }
+
+    @Override
+    public boolean adminEditAccount(UserModel userModelUpdate) {
+        StringBuilder sql = new StringBuilder("UPDATE user SET username = ?, fullname = ?,");
+        sql.append(" password = ?, roleid = ?, modifieddate = ?, modifiedby = ? WHERE id = ?");
+
+        return update(sql.toString(), userModelUpdate.getUserName(), userModelUpdate.getFullName(), userModelUpdate.getPassword(),userModelUpdate.getRoleId(),
+                userModelUpdate.getModifiedDate(), userModelUpdate.getModifiedBy(),userModelUpdate.getId());
+    }
+
 }

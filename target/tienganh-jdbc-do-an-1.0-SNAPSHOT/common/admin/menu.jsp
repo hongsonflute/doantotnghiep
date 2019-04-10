@@ -38,7 +38,7 @@
             <li class="${active4}">
                 <a href='<c:url value="/admin-list-question?action=list"/> '>
                     <i class="ti-view-list-alt"></i>
-                    <p>Quản Lý Bài Luyện Tập</p>
+                    <p>Quản Lý Câu Hỏi</p>
                 </a>
             </li>
             <li class="${active5}">
@@ -50,7 +50,7 @@
             <li class="${active6}">
                 <a href='<c:url value="/admin-list-question?action=edit"/>'>
                     <i class="ti-pencil-alt2"></i>
-                    <p>Thêm Bài Luyện Tập</p>
+                    <p>Thêm Câu Hỏi</p>
                 </a>
             </li>
             <li class="${active7}">

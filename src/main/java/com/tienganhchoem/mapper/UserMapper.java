@@ -16,6 +16,11 @@ public class UserMapper implements RowMapper<UserModel> {
             user.setFullName(resultSet.getString("fullname"));
             user.setPassword(resultSet.getString("password"));
             user.setStatus(resultSet.getInt("status"));
+            user.setModifiedBy(resultSet.getString("modifiedby"));
+            user.setModifiedDate(resultSet.getTimestamp("modifieddate"));
+            user.setCreatedDate(resultSet.getTimestamp("createddate"));
+            user.setCreatedBy(resultSet.getString("createdby"));
+            user.setRoleId(resultSet.getLong("roleid"));
             try {
                 RoleModel role = new RoleModel();
                 role.setCode(resultSet.getString("code"));
