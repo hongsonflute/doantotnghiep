@@ -1,7 +1,9 @@
 package com.tienganhchoem.controller.admin;
 
+import com.tienganhchoem.model.ThongKeModel;
 import com.tienganhchoem.model.UserModel;
 import com.tienganhchoem.security.AuthenticationFilter;
+import com.tienganhchoem.service.impl.ThongKeService;
 import com.tienganhchoem.utils.FormUtil;
 
 import javax.servlet.RequestDispatcher;
@@ -42,6 +44,15 @@ public class AdminHomeController extends HttpServlet {
             req.setAttribute("active1",active1);
             String pageTitle="Thống Kê";
             req.setAttribute("pageTitle",pageTitle);
+            ThongKeModel thongKeModel=new ThongKeModel();
+            ThongKeService thongKeService=new ThongKeService();
+            Long countCategory=thongKeService.countCategory();
+            Long countAccount=thongKeService.countAccount();
+            Long countLession=thongKeService.countLession();
+            thongKeModel.setCountCategory(countCategory);
+            thongKeModel.setCountAccount(countAccount);
+            thongKeModel.setCountLession(countLession);
+            req.setAttribute("thongKeModel",thongKeModel);
             RequestDispatcher rd = req.getRequestDispatcher("/views/admin/thong-ke.jsp");
             rd.forward(req, resp);
         }

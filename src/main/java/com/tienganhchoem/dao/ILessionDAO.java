@@ -13,4 +13,6 @@ public interface ILessionDAO extends GenericDAO<LessionModel> {
     List<LessionModel> findAll();
     List<LessionModel> findTop3ByCategoryId(Long categoryId);
     boolean tangView(Long lessionId);
+    List<LessionModel> findByStatus(Long status);
+    boolean changeStatusLession(Long status,Long idLession);
 }

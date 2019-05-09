@@ -14,4 +14,5 @@ public interface IUserService {
     void delete(long[] ids);
     boolean adminEditAccount(UserModel userModel);
 
+
 }

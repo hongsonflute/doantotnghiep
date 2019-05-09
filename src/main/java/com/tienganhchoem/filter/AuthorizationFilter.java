@@ -33,7 +33,15 @@ public class AuthorizationFilter implements Filter {
             } else {
                 response.sendRedirect(request.getContextPath()+"/dang-nhap?action=login");
             }
-        } else {
+        }else if (url.startsWith("/lession-detail")){
+            UserModel model = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+            if (model != null) {
+                filterChain.doFilter(servletRequest, servletResponse);
+            }else {
+                response.sendRedirect(request.getContextPath()+"/dang-nhap?action=login");
+            }
+        }
+        else {
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }

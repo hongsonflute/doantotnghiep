@@ -25,8 +25,13 @@ public class UploadFileAPI extends HttpServlet{
         UploadFileModel uploadFileModel =  HttpUtil.of(req.getReader()).toModel(UploadFileModel.class);
         byte[] decodeBase64 = Base64.getDecoder().decode(uploadFileModel.getBase64().getBytes());
         UploadFileUtil uploadFileUtil= new UploadFileUtil();
-        uploadFileUtil.writeOrUpdate(decodeBase64, "/thumbnail-lession/"+uploadFileModel.getName());
+        boolean kq= uploadFileUtil.writeOrUpdate(decodeBase64, "/thumbnail-lession/"+uploadFileModel.getName());
+        if(kq==true){
+            mapper.writeValue(resp.getOutputStream(), "upload-thanhcong");
+        }
+        else {
+            mapper.writeValue(resp.getOutputStream(), "upload-thatbai");
+        }
 
-        mapper.writeValue(resp.getOutputStream(), uploadFileModel);
     }
 }

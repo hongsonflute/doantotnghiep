@@ -19,6 +19,7 @@ public class LessionMapper implements RowMapper<LessionModel> {
             lession.setThumbnail(resultSet.getString("thumbnail"));
             lession.setCreatedBy(resultSet.getString("createdby"));
             lession.setCreatedDate(resultSet.getTimestamp("createddate"));
+            lession.setVideo(resultSet.getString("video"));
             try {
                 CategoryModel categoryModel=new CategoryModel();
                 categoryModel.setCode(resultSet.getString("code"));

@@ -23,11 +23,11 @@ public class LessionDAO extends AbstractDAO<LessionModel> implements ILessionDAO
     @Override
     public Long save(LessionModel lessionModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO lession (title, thumbnail,");
-        sql.append(" shortdescription, content, categoryid, createddate, createdby, view)");
-        sql.append(" VALUES(?, ?, ?, ?, ?, ?, ?, 1)");
+        sql.append(" shortdescription, content, categoryid, createddate, createdby, view, video)");
+        sql.append(" VALUES(?, ?, ?, ?, ?, ?, ?, 1, ?)");
 
         return insert(sql.toString(), lessionModel.getTitle(), lessionModel.getThumbnail(), lessionModel.getShortDescription(),
-                lessionModel.getContent(), lessionModel.getCategoryId(), lessionModel.getCreatedDate(), lessionModel.getCreatedBy());
+                lessionModel.getContent(), lessionModel.getCategoryId(), lessionModel.getCreatedDate(), lessionModel.getCreatedBy(), lessionModel.getVideo());
     }
 
     @Override
@@ -78,5 +78,18 @@ public class LessionDAO extends AbstractDAO<LessionModel> implements ILessionDAO
     public boolean tangView(Long lessionId) {
         String sql="update lession set view=view+1 where id=?";
         return update(sql,lessionId);
+    }
+
+    @Override
+    public List<LessionModel> findByStatus(Long status) {
+        String sql="select *from lession  where status=?";
+        List<LessionModel> lessionModels=query(sql,new LessionMapper(),status);
+        return lessionModels;
+    }
+
+    @Override
+    public boolean changeStatusLession(Long status, Long lessionId) {
+        String sql="update lession set status=? where id=?";
+        return update(sql,status,lessionId);
     }
 }

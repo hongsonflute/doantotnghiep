@@ -44,6 +44,7 @@
                         <tr>
                             <th>Anh đại diện</th>
                             <td><input type="file" name="thumbnail" id="uploadImage" ></td>
+                            <p id="kq-upload"></p>
                         </tr>
                         <tr>
                             <th>Mô tả ngắn </th>
@@ -52,6 +53,11 @@
                         <tr>
                             <th>Nội dung</th>
                             <td><textarea id="ck1" name="content" value="${lessionModel.content}"></textarea></td>
+                        </tr>
+                        <tr>
+                            <th>Video Nội Dung</th>
+                            <td><input type="file" name="video" id="videoUpload" ></td>
+                            <p id="kq-upload-video"></p>
                         </tr>
                         <tr>
                             <th>

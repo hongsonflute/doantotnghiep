@@ -72,7 +72,8 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
         StringBuilder sql = new StringBuilder("UPDATE user SET username = ?, fullname = ?,");
         sql.append(" password = ?, roleid = ?, modifieddate = ?, modifiedby = ? WHERE id = ?");
 
-        return update(sql.toString(), userModelUpdate.getUserName(), userModelUpdate.getFullName(), userModelUpdate.getPassword(),userModelUpdate.getRoleId(),
+        return update(sql.toString(), userModelUpdate.getUserName(), userModelUpdate.getFullName(),
+                userModelUpdate.getPassword(),userModelUpdate.getRoleId(),
                 userModelUpdate.getModifiedDate(), userModelUpdate.getModifiedBy(),userModelUpdate.getId());
     }
 

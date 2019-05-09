@@ -43,5 +43,6 @@
 <!-- Active js -->
 <script src="/template/web/js/active.js"></script>
 <script src="/global/js/xulygame.js"></script>
+<script src="/global/js/xulytracnghiem.js"></script>
 </body>
 </html>

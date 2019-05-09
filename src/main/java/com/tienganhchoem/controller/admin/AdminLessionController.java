@@ -82,7 +82,14 @@ public class AdminLessionController extends HttpServlet {
             request.setAttribute("active5", active5);
             RequestDispatcher rd = request.getRequestDispatcher("/views/admin/lession/lession-edit.jsp");
             rd.forward(request, response);
-        } else {
+        } else if (action != null && action.equals("locbaihoc")){
+            String status=request.getParameter("status");
+            LessionService lessionService = new LessionService();
+            List<LessionModel> lessionModels = lessionService.findByStatus(Long.parseLong(status));
+            request.setAttribute("trangthai",status);
+            request.setAttribute("lessionModels", lessionModels);
+            RequestDispatcher rd = request.getRequestDispatcher("/views/admin/lession/lession-list.jsp");
+            rd.forward(request, response);
 
         }
     }
@@ -102,5 +109,37 @@ public class AdminLessionController extends HttpServlet {
             mapper.writeValue(resp.getOutputStream(),"xoathatbai");
         }
 
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("application/json");
+        LessionModel lessionModel = HttpUtil.of(req.getReader()).toModel(LessionModel.class);
+        LessionService lessionService = new LessionService();
+        boolean kqDuyet=lessionService.changeStatusLession(1l,lessionModel.getIds());
+        if(kqDuyet==true) {
+            mapper.writeValue(resp.getOutputStream(), "duyetthanhcong");
+        }
+        else {
+            mapper.writeValue(resp.getOutputStream(),"duyetthatbai");
+        }
+    }
+
+    @Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("application/json");
+        LessionModel lessionModel = HttpUtil.of(req.getReader()).toModel(LessionModel.class);
+        LessionService lessionService = new LessionService();
+        boolean kqDuyet=lessionService.HuyDuyet(0l,lessionModel.getIds());
+        if(kqDuyet==true) {
+            mapper.writeValue(resp.getOutputStream(), "huythanhcong");
+        }
+        else {
+            mapper.writeValue(resp.getOutputStream(),"huythatbai");
+        }
     }
 }

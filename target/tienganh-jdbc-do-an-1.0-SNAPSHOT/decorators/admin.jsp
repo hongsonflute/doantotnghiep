@@ -65,6 +65,7 @@
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="/template/admin/js/demo.js"></script>
 <script src="/global/js/validate.js"></script>
+<script src="/global/js/themcauhoi.js"></script>
 
 
 <%--<script type="text/javascript">

@@ -77,4 +77,32 @@ public class LessionService implements ILessionService {
     public boolean tangView(Long lessionId) {
         return lessionDAO.tangView(lessionId);
     }
+
+    @Override
+    public List<LessionModel> findByStatus(Long status) {
+        return lessionDAO.findByStatus(status);
+    }
+
+    @Override
+    public boolean changeStatusLession(Long status, long[] idlession) {
+
+        for (long id : idlession) {
+            if(lessionDAO.changeStatusLession(status,id)==true){
+                continue;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean HuyDuyet(Long status, long[] idlession) {
+        for (long id : idlession) {
+            if(lessionDAO.changeStatusLession(status,id)==true){
+                continue;
+            }
+            return false;
+        }
+        return true;
+    }
 }

@@ -19,7 +19,7 @@
                 <!-- Hero Content -->
                 <div class="hero-content text-center">
                     <h2>Let's Study Together</h2>
-                    <a href="#" class="btn clever-btn">Khám Phá</a>
+                    <a href="<c:url value="/list-lession?action=listAll"/>" class="btn clever-btn">Khám Phá</a>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                     </div>
 
                     <div id="collapseTwo_${item.code}" <c:if test="${item.id==1}">class="collapse show"</c:if>
-                         <c:if test="${item.id!=1}">class="collapse"</c:if>
+                         <c:if test="${item.id!=1}">class="collapse show"</c:if>
 
                          aria-labelledby="headingTwo__${item.code}"
                          data-parent="#accordionExample">
@@ -70,7 +70,8 @@
                                         <div class="col-12 col-md-6 col-lg-4">
                                             <div class="single-popular-course mb-100 wow fadeInUp"
                                                  data-wow-delay="250ms">
-                                                <img src="/template/web/img/bg-img/c1.jpg" alt="">
+                                                <c:set var="image" value="/repository/${les.thumbnail}"/>
+                                                <img src="${image}" alt="" class="thumbnail-lession">
                                                 <!-- Course Content -->
                                                 <div class="course-content">
                                                     <h4>${les.title}</h4>

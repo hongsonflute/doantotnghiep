@@ -50,7 +50,13 @@
             <li class="${active6}">
                 <a href='<c:url value="/admin-list-question?action=edit"/>'>
                     <i class="ti-pencil-alt2"></i>
-                    <p>Thêm Câu Hỏi</p>
+                    <p>Thêm Luyện Nghe</p>
+                </a>
+            </li>
+            <li class="${active6}">
+                <a href='<c:url value="/admin-trac-nghiem"/>'>
+                    <i class="ti-pencil-alt2"></i>
+                    <p>Thêm Trắc Nghiệm</p>
                 </a>
             </li>
             <li class="${active7}">

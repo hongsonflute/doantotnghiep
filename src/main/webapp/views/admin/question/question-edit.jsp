@@ -41,11 +41,10 @@
                     <div class="row">
                         <div class="col-md-2"><label>Chọn kiểu câu hỏi</label></div>
                         <div class="col-md-10">
-                            <select>
-                                <option>sdgfsdfg</option>
-                                <option>sdgfsdfg</option>
-                                <option>sdgfsdfg</option>
-                                <option>sdgfsdfg</option>
+                            <select id="loaicauhoi">
+                                <option id="luyennghe">Luyện Nghe</option>
+                                <option>Luyện Nói</option>
+                                <option value="3">Trắc Nghiệm</option>
                             </select>
                         </div>
 
@@ -128,7 +127,8 @@
                 </div>
             </div>
         </div>
-        <button>Thêm câu hỏi</button>
+        <button id="themcauhoi">Thêm câu hỏi</button>
+
     </div>
 </div>
 </body>

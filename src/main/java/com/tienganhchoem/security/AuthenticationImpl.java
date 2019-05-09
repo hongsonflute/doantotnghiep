@@ -27,7 +27,7 @@ public class AuthenticationImpl implements AuthenticationFilter {
             if (model.getRole().getCode().equals("USER")) {
                 return "/trang-chu";
             } else if (model.getRole().getCode().equals("ADMIN")||model.getRole().getCode().equals("TEACHER")) {
-                return "/admin-home";
+                return "/admin-home?action=statistical";
             }
         } else {
             return "/dang-nhap?action=loginFalse";

@@ -86,76 +86,93 @@ function validateLogin() {
     return true;
 }
 
-    enableOrDisableDeleteAllLes();
-    enableOrDisableDeleteAllUser();
-    autoCheckBoxChild();
-    autoCheckBoxParent();
+enableOrDisableDeleteAllLes();
+enableOrDisableDeleteAllUser();
+autoCheckBoxChild();
+autoCheckBoxParent();
+enableOrDisableDuyet();
+enableOrDisableHuyDuyet();
+$('#uploadImage').change(function () {
+    var dataArray = {};
+    var files = $(this)[0].files[0];
+    if (files != undefined) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            dataArray["base64"] = e.target.result;
+            dataArray["name"] = files.name;
+            uploadFile(dataArray);
+        };
+        reader.readAsDataURL(files);
+    }
+});
+$('#videoUpload').change(function () {
+    var dataArray = {};
+    var files = $(this)[0].files[0];
+    if (files != undefined) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            dataArray["base64"] = e.target.result;
+            dataArray["name"] = files.name;
+            uploadFile(dataArray);
+        };
+        reader.readAsDataURL(files);
+    }
+});
 
-        $('#uploadImage').change(function () {
-            var dataArray = {};
-            var files = $(this)[0].files[0];
-            if (files != undefined) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    dataArray["base64"] = e.target.result;
-                    dataArray["name"] = files.name;
-                    uploadFile(dataArray);
-                };
-                reader.readAsDataURL(files);
-            }
-        });
-        function uploadFile(data) {
-            $.ajax({
-                url: '/upload-file',
-                type: 'POST',
-                data: JSON.stringify(data),
-                contentType: 'application/json',
-                success: function (res) {
-                    console.log(res);
-                },
-                error: function (res) {
-                    console.log(res);
-                }
-            });
-        }
-
-
-    $('#btnDeleteUser').click(function (e) {
-        var kqXoa=confirm("Bạn có chắc muốn xóa không?");
-        e.preventDefault();
-        if(kqXoa==true){
-            var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
-                return $(this).val();
-            }).get();
-            var data = {};
-            data["ids"] = dataArray;
-            $.ajax({
-                url: '/admin-list-account',
-                type: 'DELETE',
-                contentType: 'application/json',
-                data: JSON.stringify(data),
-                dataType: 'json',
-                success: function (result) {
-                    /*console.log("thanh cong");
-                    window.location.reload(true);*/
-                    window.location.href = "/admin-list-account?action=list&msg=xoathanhcong";
-                },
-                error: function (error) {
-                    console.log("that bai");
-                    window.location.href = "/admin-list-account?action=list&msg=xoathatbai";
-                }
-            });
-        }
-        else {
-            return false;
+function uploadFile(data) {
+    $.ajax({
+        url: '/upload-file',
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function (res) {
+            console.log(res);
+            $('#kq-upload').html("<label style='color: blue'>up  thành công</label>");
+        },
+        error: function (res) {
+            console.log(res);
+            $('#kq-upload').html("<label style='color: red'>up  thất bại</label>");
         }
     });
+}
+
+
+$('#btnDeleteUser').click(function (e) {
+    var kqXoa = confirm("Bạn có chắc muốn xóa không?");
+    e.preventDefault();
+    if (kqXoa == true) {
+        var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val();
+        }).get();
+        var data = {};
+        data["ids"] = dataArray;
+        $.ajax({
+            url: '/admin-list-account',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                /*console.log("thanh cong");
+                window.location.reload(true);*/
+                window.location.href = "/admin-list-account?action=list&msg=xoathanhcong";
+            },
+            error: function (error) {
+                console.log("that bai");
+                window.location.href = "/admin-list-account?action=list&msg=xoathatbai";
+            }
+        });
+    }
+    else {
+        return false;
+    }
+});
 
 
 $('#btnDeleteLession').click(function (e) {
-    var kqXoa=confirm("Bạn có chắc muốn xóa không?");
+    var kqXoa = confirm("Bạn có chắc muốn xóa không?");
     e.preventDefault();
-    if(kqXoa==true){
+    if (kqXoa == true) {
         var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
             return $(this).val();
         }).get();
@@ -171,7 +188,39 @@ $('#btnDeleteLession').click(function (e) {
                 /*console.log("thanh cong");
                 window.location.reload(true);*/
                 console.log(result);
-                window.location.href = "/admin-list-lession?action=list&msg="+result;
+                window.location.href = "/admin-list-lession?action=list&msg=" + result;
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    else {
+        return false;
+    }
+});
+
+$('#btnDuyet').click(function (e) {
+    var kqDuyet = confirm("Bạn có chắc muốn duyệt không?");
+    e.preventDefault();
+    if (kqDuyet == true) {
+        var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val();
+        }).get();
+        var data = {};
+        data["ids"] = dataArray;
+        $.ajax({
+            url: '/admin-list-lession',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                /*console.log("thanh cong");
+                window.location.reload(true);*/
+                console.log(result);
+                window.location.href = "/admin-list-lession?action=list&msg=" + result;
+                alert("Duyệt Thành công!")
             },
             error: function (error) {
                 console.log(error);
@@ -184,7 +233,40 @@ $('#btnDeleteLession').click(function (e) {
 });
 
 
-    /*-----------------------------*/
+
+$('#btnHuyDuyet').click(function (e) {
+    var kqDuyet = confirm("Bạn có chắc muốn hủy duyệt không?");
+    e.preventDefault();
+    if (kqDuyet == true) {
+        var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val();
+        }).get();
+        var data = {};
+        data["ids"] = dataArray;
+        $.ajax({
+            url: '/admin-list-lession',
+            type: 'OPTIONS',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                /*console.log("thanh cong");
+                window.location.reload(true);*/
+                console.log(result);
+                window.location.href = "/admin-list-lession?action=list&msg=" + result;
+                alert("Hủy Duyệt Thành công!")
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    else {
+        return false;
+    }
+});
+
+/*-----------------------------*/
 
 function enableOrDisableDeleteAllUser() {
     $('input[type=checkbox]').click(function () {
@@ -198,7 +280,7 @@ function enableOrDisableDeleteAllUser() {
     });
 }
 
-/*function enableOrDisableSuaAll() {
+function enableOrDisableSuaAll() {
     $('input[type=checkbox]').click(function () {
         if ($('input[type=checkbox]:checked').length > 0) {
             $('#btnSua').prop('disabled', false);
@@ -208,7 +290,7 @@ function enableOrDisableDeleteAllUser() {
             $('#btnSua').css("background-color", "");
         }
     });
-}*/
+}
 
 function autoCheckBoxChild() {
     $('#checkAll').change(function () {
@@ -250,7 +332,7 @@ function enableOrDisableDeleteAllLes() {
     });
 }
 
-/*function enableOrDisableSuaAll() {
+function enableOrDisableSuaAll() {
     $('input[type=checkbox]').click(function () {
         if ($('input[type=checkbox]:checked').length > 0) {
             $('#btnSua').prop('disabled', false);
@@ -260,6 +342,27 @@ function enableOrDisableDeleteAllLes() {
             $('#btnSua').css("background-color", "");
         }
     });
-}*/
+}
 
-
+function enableOrDisableDuyet() {
+    $('input[type=checkbox]').click(function () {
+        if ($('input[type=checkbox]:checked').length > 0) {
+            $('#btnDuyet').prop('disabled', false);
+            $('#btnDuyet').css("background-color", "#E8E8E8");
+        } else {
+            $('#btnDuyet').prop('disabled', true);
+            $('#btnDuyet').css("background-color", "");
+        }
+    });
+}
+function enableOrDisableHuyDuyet() {
+    $('input[type=checkbox]').click(function () {
+        if ($('input[type=checkbox]:checked').length > 0) {
+            $('#btnHuyDuyet').prop('disabled', false);
+            $('#btnHuyDuyet').css("background-color", "#E8E8E8");
+        } else {
+            $('#btnHuyDuyet').prop('disabled', true);
+            $('#btnHuyDuyet').css("background-color", "");
+        }
+    });
+}

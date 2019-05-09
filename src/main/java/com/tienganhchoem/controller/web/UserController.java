@@ -18,6 +18,7 @@ import java.io.PrintWriter;
 public class UserController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             //MỤC ĐÍCH LÀ ĐỂ CẬP NHẬT THÔNG TIN CỦA USER ĐÓ:
+             request.setCharacterEncoding("utf-8");
             UserModel userModel= FormUtil.toModel(UserModel.class,request); //lấy các prameter gửi từ form truyền vào model
             UserService userService =new UserService();
             HttpSession ss=request.getSession();

@@ -21,6 +21,7 @@ public class UserMapper implements RowMapper<UserModel> {
             user.setCreatedDate(resultSet.getTimestamp("createddate"));
             user.setCreatedBy(resultSet.getString("createdby"));
             user.setRoleId(resultSet.getLong("roleid"));
+            user.setAvatar(resultSet.getString("avatar"));
             try {
                 RoleModel role = new RoleModel();
                 role.setCode(resultSet.getString("code"));

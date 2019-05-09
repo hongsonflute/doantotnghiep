@@ -21,7 +21,7 @@
                     <div class="col-xs-7">
                         <div class="numbers">
                             <p>TỔNG CHỦ ĐỀ</p>
-                            5
+                            ${thongKeModel.countCategory}
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                     <div class="col-xs-7">
                         <div class="numbers">
                             <p>TỔNG BÀI HỌC</p>
-                            25
+                            ${thongKeModel.countLession}
                         </div>
                     </div>
                 </div>
@@ -72,34 +72,8 @@
                     </div>
                     <div class="col-xs-7">
                         <div class="numbers">
-                            <p>TỔNG CÂU HỎI</p>
-                            45
-                        </div>
-                    </div>
-                </div>
-                <div class="footer">
-                    <hr/>
-                    <div class="stats">
-                        <i class="ti-reload"></i> Updated now
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-sm-6">
-        <div class="card">
-            <div class="content">
-                <div class="row">
-                    <div class="col-xs-5">
-                        <div class="icon-big icon-warning text-center">
-                            <i class="ti-wallet"></i>
-                        </div>
-                    </div>
-                    <div class="col-xs-7">
-                        <div class="numbers">
-                            <p>TỔNG ĐÁP ÁN</p>
-                            105
+                            <p>TỔNG TÀI KHOẢN</p>
+                            ${thongKeModel.countAccount}
                         </div>
                     </div>
                 </div>

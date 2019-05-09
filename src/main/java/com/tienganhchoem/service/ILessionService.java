@@ -14,4 +14,7 @@ public interface ILessionService {
     List<LessionModel> findAll();
     List<LessionModel> findTop3ByCategoryId();
     boolean tangView(Long lessionId);
+    List<LessionModel> findByStatus(Long status);
+    boolean changeStatusLession(Long status, long[] idlession);
+    boolean HuyDuyet(Long status, long[] idlession);
 }

@@ -7,6 +7,15 @@ public class LessionModel extends AbstractModel<LessionModel> {
     private String content;
     private Long categoryId;
     private CategoryModel categoryModel;
+    private String video;
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
 
     public CategoryModel getCategoryModel() {
         return categoryModel;

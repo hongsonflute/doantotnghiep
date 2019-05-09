@@ -198,3 +198,14 @@
     background-size: cover;
     border: solid 1px grey;
 }
+.sodiemtest{
+    float: right;
+    padding-left: 80%;
+}
+.thumbnail-lession{
+    width: 350px;
+    height: 177px;
+    background-position: center center;
+    background-size: cover;
+    border: solid 1px grey;
+}
